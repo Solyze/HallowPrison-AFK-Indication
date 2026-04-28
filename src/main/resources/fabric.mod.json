@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "hallowprison-afk-indication",
+  "version": "${version}",
+  "name": "HallowPrison AFK Indication",
+  "description": "A clientside mod to indicate who on the HallowPrison server is inside the AFK Zone.",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "icon": "assets/hallowprison-afk-indication/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.solyze.hallowprison.afkindication.client.MainClient"
+    ],
+    "main": [
+      "net.solyze.hallowprison.afkindication.Main"
+    ]
+  },
+  "mixins": [
+    "hallowprison-afk-indication.mixins.json",
+    {
+      "config": "hallowprison-afk-indication.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
