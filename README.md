@@ -1,3 +1,5 @@
 A clientside mod to indicate who on the HallowPrison server is inside the AFK Zone.
 
-<img width="455" height="391" alt="image" src="https://github.com/user-attachments/assets/2d319ff3-d04a-431e-92e0-b56629f58a25" />
+<img width="427" height="411" alt="image" src="https://github.com/user-attachments/assets/a6ac43b6-d2c2-4a8f-87b2-c5d3b6dd525b" />
+
+Download here: https://github.com/Solyze/HallowPrison-AFK-Indication/releases/tag/1.0.1-for-MC-1.21.11
