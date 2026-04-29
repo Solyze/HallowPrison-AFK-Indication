@@ -4,6 +4,7 @@
   "package": "net.solyze.hallowprison.afkindication.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "MinecraftClientMixin",
     "PlayerListHudMixin"
   ],
   "injectors": {
