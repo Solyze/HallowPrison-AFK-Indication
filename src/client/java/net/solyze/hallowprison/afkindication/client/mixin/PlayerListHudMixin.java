@@ -6,7 +6,10 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.solyze.hallowprison.afkindication.Main;
 import net.solyze.hallowprison.afkindication.client.MainClient;
+import net.solyze.hallowprison.afkindication.config.ConfigManager;
+import net.solyze.hallowprison.afkindication.config.MainConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,8 +32,27 @@ public class PlayerListHudMixin {
             return Optional.empty();
         }, Style.EMPTY);
 
-        MutableText prefix = Text.literal("[AFK] ").formatted(Formatting.DARK_GRAY);
+        MutableText finalText = grayName;
+        Main main = Main.getInstance();
 
-        info.setReturnValue(prefix.append(grayName));
+        if (main != null) {
+            ConfigManager configManager = main.getConfigManager();
+
+            if (configManager != null) {
+                Optional<Object> optional = configManager.getConfig(MainConfig.class);
+
+                if  (optional.isPresent()) {
+                    MainConfig config = (MainConfig) optional.get();
+
+                    if (config.isPrefixEnabled()) {
+                        MutableText prefix = Text.literal("[AFK] ").formatted(Formatting.DARK_GRAY);
+                        finalText = prefix.append(grayName);
+                    }
+                }
+            }
+        }
+
+
+        info.setReturnValue(finalText);
     }
 }
